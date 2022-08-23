@@ -19,14 +19,26 @@
 <body>
     <header class="page-header">
         <img class="logo" src="/assets/html_css_js.png">
-        <p class="title">Supabase Web App</p>
+        <p class="title">Shopping List</p>
         <nav>
             <a id="sign-out-link" href="auth">Sign Out</a>
         </nav>
     </header>
 
     <main>
+        <form id="add-shopping-list-item">
+            <label>
+                <input item="item" required placeholder="item of choice">
+            </label>
+            <label>
+                <input type="number" id="quantity" 
+                name="quantity" min="1" max="10">
+            </label>
+            <button>Add Item</button>
+        </form>
 
+        <h2>Shopping List</h2>
+        <div id="shopping-list-container"></div>
     </main>
 
     <footer>&copy;2022 Alchemy Software Developer</footer>

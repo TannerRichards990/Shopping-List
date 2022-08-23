@@ -18,6 +18,7 @@ signOutLink.addEventListener('click', signOutUser);
 
 // local state:
 
+
 // display functions:
 
 // events:

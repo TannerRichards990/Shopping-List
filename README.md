@@ -8,8 +8,23 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
 
 1. **Make a drawing of your app. Simple "wireframes"**
 1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
+// HTML Elements:
+-Item-Form
+-input for item, input for quantity
+-button for adding item to List
+
+-h2 for shopping list
+-div for SL container
+
+
+
+
+
 1. **For each HTML element ask: Why do I need this?**
+-I need this to hold the item input, quantity input, and add to list button.
+-I need the container to append the values in the form to.
 1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
+- Hardcode form on HTML with inputs, create a container for that form to be posted to, and render on shopping list via supabase.
 1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
 1. **Think about how to validate each of your features according to a Definition of Done**
 1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**

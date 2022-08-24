@@ -73,3 +73,8 @@ form button:disabled {
 .hidden {
     display: none;
 }
+
+.bought {
+    text-decoration: line-through;
+}
+

@@ -1,18 +1,29 @@
-export function renderShoppingList(items, quantity) {
-    const ul = document.createElement('ul');
-    ul.classList.add('shopping-list');
+export function renderShoppingList(item, action) {
 
-    for (const item of items) {
-        const li = document.createElement('li');
-        li.classList.add('shopping-list-item');
+    const li = document.createElement('li');
+    li.classList.add('shopping-list-item');
 
-        const h3 = document.createElement('h3');
-        h3.textContent = item.name;
+    const h3 = document.createElement('h3');
+    h3.textContent = item.item;
 
-        const p = document.createElement('p');
-        p.textContent = quantity + ' ' + item.unit;
+    const p = document.createElement('p');
+    p.textContent = item.quantity;
 
-        li.append(h3, p);
-        ul.append(li);
+    li.append(h3, p);
+    
 
-    }}
+    li.addEventListener('click', () => {
+        li.classList.toggle('bought');
+    });
+    if (item.bought) {
+        li.classList.add('bought');
+    } else {
+        li.classList.add('not-bought');
+        li.addEventListener('click', async () => {
+            
+            action(item);
+    
+        });
+    }
+    return li;
+}

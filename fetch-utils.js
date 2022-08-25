@@ -1,5 +1,5 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://mtegvpmustvqjcrpqjft.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10ZWd2cG11c3R2cWpjcnBxamZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTk2MzgyMTYsImV4cCI6MTk3NTIxNDIxNn0.1qATbqaxyJY3HmYMZsX0LcLV6_XXcgd_qnE96O4JeR8';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -42,4 +42,35 @@ export async function signOutUser() {
     return await client.auth.signOut();
 }
 
+function checkError({ data, error }) {
+    return error ? error : data;
+}
+    
+
 /* Data functions */
+export async function getListItems() {
+    const response = await client.from('shopping-list').select();
+
+    return checkError(response);
+}
+
+export async function createListItem(item) {
+    const response = await client.from('shopping-list').insert([{
+        item : item.item,
+        quantity : item.quantity
+    }]);
+
+    return checkError(response);
+}
+
+export async function boughtListItem(id) {
+    const response = await client.from('shopping-list').update({ bought: true }).match({ id: id });
+
+    return checkError(response);
+}
+
+export async function deleteAllItems(id) {
+    const response = await client.from('shopping-list').delete().match({ user_id: id });
+
+    return checkError(response);
+}
